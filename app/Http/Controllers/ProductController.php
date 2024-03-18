@@ -32,6 +32,7 @@ class ProductController extends Controller
         ]);
  
          Product::create($request->all());
+         return response()->json(['message' =>'Product created successfully'],400);
     }
 
     /**
@@ -42,7 +43,12 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return Product::find($id);
+       $product = Product::find($id);
+       if ($product == null) {
+        return response()->json(['message' => 'No products found matching the search criteria.'], 404);
+    }
+
+    return $product;
     }
 
     /**
@@ -56,6 +62,9 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->update($request->all());
+        if ($product) {
+            return response()->json(['message' => 'Product update successfully'], 404);
+        }
         return $product;
     }
 
@@ -67,7 +76,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        return Product::destroy($id);
+        $product = Product::destroy($id);
+        if ($product) {
+            return response()->json(['message' => 'Product Delete successfully'], 404);
+        }
     }
 
      /**
@@ -78,6 +90,12 @@ class ProductController extends Controller
      */
     public function search($name)
     {
-        return Product::where('name', 'like', '%'.$name.'%')->get();
+        $products = Product::where('name', 'like', '%'.$name.'%')->get();
+    
+        if ($products->isEmpty()) {
+            return response()->json(['message' => 'No products found matching the search criteria.'], 404);
+        }
+    
+        return $products;
     }
 }
