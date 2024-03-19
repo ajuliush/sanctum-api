@@ -51,7 +51,7 @@
             </p>
             <p><strong>Method:</strong> POST</p>
             <p><strong>Description:</strong> Register a new user.</p>
-            <p><strong>Request Body:</strong> {"username": "example_user", "password": "example_password", "email": "user@example.com"}</p>
+            <p><strong>Request Body:</strong> {"name": "example_user", "password": "example_password","password_confirmation": "example_password", "email": "user@example.com"}</p>
             <p><strong>Response:</strong> Status: 201 Created, Body: {"message": "User created successfully"}</p>
         </div>
 
@@ -61,9 +61,110 @@
                 <span>https://api.juliush.dev/api/login</span>
                 <i class="fa fa-copy" style="font-size:24px" href="https://api.juliush.dev/api/login" id="copyLink2"></i></p>
             <p><strong>Method:</strong> POST</p>
-            <p><strong>Description:</strong> Authenticate and obtain a JWT token.</p>
-            <p><strong>Request Body:</strong> {"username": "example_user", "password": "example_password"}</p>
+            <p><strong>Description:</strong> Authenticate and obtain a Bearer token.</p>
+            <p><strong>Request Body:</strong> {"email": "user@example.com", "password": "example_password"}</p>
             <p><strong>Response:</strong> Status: 200 OK, Body: {"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."}</p>
+        </div>
+        <div class="endpoint">
+            <h2>Show all Product</h2>
+            <p><strong>Endpoint:</strong>
+                <span>https://api.juliush.dev/api/products</span>
+                <i class="fa fa-copy" style="font-size:24px" href="https://api.juliush.dev/api/products" id="copyLink3"></i></p>
+            <p><strong>Method:</strong> GET</p>
+            <p><strong>Request Body:</strong> [
+                {
+                "id": 7,
+                "name": "test product 1",
+                "slug": "test_12321",
+                "description": null,
+                "price": "100.00",
+                "created_at": "2024-03-18T10:44:20.000000Z",
+                "updated_at": "2024-03-18T10:44:20.000000Z"
+                }, <br>
+                {
+                "id": 8,
+                "name": "test product 1",
+                "slug": "test_12321",
+                "description": null,
+                "price": "100.00",
+                "created_at": "2024-03-18T10:45:59.000000Z",
+                "updated_at": "2024-03-18T10:45:59.000000Z"
+                },<br>
+                {
+                "id": 10,
+                "name": "test eee new",
+                "slug": "eeeee",
+                "description": null,
+                "price": "600.00",
+                "created_at": "2024-03-18T17:31:38.000000Z",
+                "updated_at": "2024-03-18T17:31:38.000000Z"
+                }<br>
+                ]</p>
+        </div>
+        <div class="endpoint">
+            <h2>Show Product</h2>
+            <p><strong>Endpoint:</strong>
+                <span>https://api.juliush.dev/api/products/7</span>
+                <i class="fa fa-copy" style="font-size:24px" href="https://api.juliush.dev/api/products/7" id="copyLink4"></i></p>
+            <p><strong>Method:</strong> GET</p>
+            <p><strong>Request Body:</strong> {"id": 7,
+                "name": "test product 1",
+                "slug": "test_12321",
+                "description": null,
+                "price": "100.00",
+                "created_at": "2024-03-18T10:44:20.000000Z",
+                "updated_at": "2024-03-18T10:44:20.000000Z"}</p>
+        </div>
+        <div class="endpoint">
+            <h2>Search Product</h2>
+            <p><strong>Endpoint:</strong>
+                <span>https://api.juliush.dev/api/products/search/product_name</span>
+                <i class="fa fa-copy" style="font-size:24px" href="https://api.juliush.dev/api/products/search" id="copyLink5"></i></p>
+            <p><strong>Method:</strong> GET</p>
+            <p><strong>Request Body:</strong> {"id": 7,
+                "name": "test product 1",
+                "slug": "test_12321",
+                "description": null,
+                "price": "100.00",
+                "created_at": "2024-03-18T10:44:20.000000Z",
+                "updated_at": "2024-03-18T10:44:20.000000Z"}</p>
+        </div>
+        <div class="endpoint">
+            <h2>Store Product</h2>
+            <p><strong>Endpoint:</strong>
+                <span>https://api.juliush.dev/api/products</span>
+                <i class="fa fa-copy" style="font-size:24px" href="https://api.juliush.dev/api/products" id="copyLink6"></i></p>
+            <p><strong>Method:</strong> POST</p>
+            <p><strong>Description:</strong> Authenticate and obtain a Bearer token.</p>
+            <p><strong>Request Body:</strong> {
+                "name": "test eee new",
+                "slug":"eeeee",
+                "price":"600"
+                }</p>
+            <p><strong>Response:</strong> Status: 200 OK, Body: {"Message": "Product created successfully"}</p>
+        </div>
+        <div class="endpoint">
+            <h2>Update Product</h2>
+            <p><strong>Endpoint:</strong>
+                <span>https://api.juliush.dev/api/products/7</span>
+                <i class="fa fa-copy" style="font-size:24px" href="https://api.juliush.dev/api/products/7" id="copyLink7"></i></p>
+            <p><strong>Method:</strong> PUT</p>
+            <p><strong>Description:</strong> Authenticate and obtain a Bearer token.</p>
+            <p><strong>Request Body:</strong> {
+                "name": "test eee new",
+                "slug":"eeeee",
+                "price":"600"
+                }</p>
+            <p><strong>Response:</strong> Status: 200 OK, Body: {"Message": "Product update successfully"}</p>
+        </div>
+        <div class="endpoint">
+            <h2>Delete Product</h2>
+            <p><strong>Endpoint:</strong>
+                <span>https://api.juliush.dev/api/products/7</span>
+                <i class="fa fa-copy" style="font-size:24px" href="https://api.juliush.dev/api/products/7" id="copyLink8"></i></p>
+            <p><strong>Method:</strong> DELETE</p>
+            <p><strong>Description:</strong> Authenticate and obtain a Bearer token.</p>
+            <p><strong>Response:</strong> Status: 200 OK, Body: {"Message": "Product delete successfully"}</p>
         </div>
 
         <!-- Add other endpoints similarly -->
@@ -86,6 +187,12 @@
         // Attach event listeners to multiple elements
         document.getElementById("copyLink1").addEventListener("click", copyToClipboard);
         document.getElementById("copyLink2").addEventListener("click", copyToClipboard);
+        document.getElementById("copyLink3").addEventListener("click", copyToClipboard);
+        document.getElementById("copyLink4").addEventListener("click", copyToClipboard);
+        document.getElementById("copyLink5").addEventListener("click", copyToClipboard);
+        document.getElementById("copyLink6").addEventListener("click", copyToClipboard);
+        document.getElementById("copyLink7").addEventListener("click", copyToClipboard);
+        document.getElementById("copyLink8").addEventListener("click", copyToClipboard);
         // Add more listeners as needed...
 
     </script>
